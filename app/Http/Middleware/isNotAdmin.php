@@ -1,0 +1,22 @@
+<?php
+
+namespace App\Http\Middleware;
+
+use Closure;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Symfony\Component\HttpFoundation\Response;
+
+class isNotAdmin
+{
+    public function handle($request, Closure $next)
+    {
+        if (auth()->user()->jabatan === 'Admin') {
+            return redirect()
+                ->route('dashboard')
+                ->with('error', 'Admin tidak diperbolehkan menambah data');
+        }
+
+        return $next($request);
+    }
+}
