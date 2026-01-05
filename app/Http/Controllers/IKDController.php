@@ -33,7 +33,7 @@ class IKDController extends Controller
             'title' => 'Data IKD (Identitas Kependudukan Digital)',
             $view['menu'] => 'active',
             'ikd' => Ikd::with('user')
-                    ->orderBy('tanggal_rekam', 'desc') // 🔥 TERBARU DI ATAS
+                    ->orderBy('tanggal_ikd', 'desc') // 🔥 TERBARU DI ATAS
                     ->get(),
         ]);
     }

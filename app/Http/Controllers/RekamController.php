@@ -13,7 +13,9 @@ class RekamController extends Controller
         $data = array(
             'title'             => 'Data Rekam KTP',
             'menuOperatorRekam' => 'active',
-            'rekam'             => RekamKtp::with('user', 'kelurahan')->get(),
+            'rekam'             => RekamKtp::with('user', 'kelurahan')
+                                    ->orderBy('tanggal_rekam', 'desc') //
+                                    ->get(),
         );
         return view('operator-rekam/rekam-ktp/index', $data);
     }
