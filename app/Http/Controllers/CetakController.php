@@ -19,6 +19,7 @@ class CetakController extends Controller
             'menuOperatorCetak' => 'active',
             'cetak'             => CetakKtp::with(['user', 'kelurahan'])
                                     ->where('status_cetak', 'Proses')
+                                    ->orderBy('tanggal_pao', 'desc') // 🔥 TERBARU DI ATAS
                                     ->get(),
         );
         return view('operator-cetak/cetak-ktp/index', $data);
@@ -33,6 +34,7 @@ class CetakController extends Controller
             'menuRiwayatCetak'    => 'active',
             'cetak'               => CetakKtp::with(['user', 'kelurahan'])
                                       ->where('status_cetak', 'Selesai')
+                                      ->orderBy('tanggal_ambil', 'desc') // 🔥 TERBARU DI ATAS
                                       ->get(),
         ];
 
